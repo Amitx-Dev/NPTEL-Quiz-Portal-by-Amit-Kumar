@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NPTEL Design Thinking Quiz & Mastery Portal</title>
+  <meta name="description"
+    content="Interactive NPTEL Design Thinking quiz application featuring 240+ questions, practice modes, timed exam simulations, 3D flashcards, and detailed analytics.">
+
+  <!-- RemixIcon CDN for icons -->
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+
+  <!-- Application Stylesheet -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+  <div id="app">
+    <!-- Navbar -->
+    <header class="navbar">
+      <div class="brand" onclick="location.hash='#dashboard'">
+        <div class="brand-icon">
+          <i class="ri-lightbulb-flash-line"></i>
+        </div>
+        <div class="brand-title">
+          <h1>NPTEL Design Thinking</h1>
+          <div class="brand-subtitle">Interactive MCQ & Exam Portal (240+ Qs)</div>
+        </div>
+      </div>
+
+      <!-- Navigation Tabs -->
+      <nav class="nav-menu">
+        <button class="nav-btn active" data-view="dashboard">
+          <i class="ri-dashboard-line"></i> Dashboard
+        </button>
+        <button class="nav-btn" data-view="quiz">
+          <i class="ri-play-circle-line"></i> Quiz Arena
+        </button>
+        <button class="nav-btn" data-view="flashcard">
+          <i class="ri-cards-line"></i> Flashcards
+        </button>
+        <button class="nav-btn" data-view="qbank">
+          <i class="ri-book-open-line"></i> Question Bank
+        </button>
+        <button class="nav-btn" data-view="analytics">
+          <i class="ri-bar-chart-grouped-line"></i> Analytics
+        </button>
+      </nav>
+
+      <!-- Navbar Controls -->
+      <div class="nav-controls">
+        <button class="icon-btn" id="sound-toggle-btn" title="Toggle Sound FX">🔊</button>
+        <button class="icon-btn" id="theme-toggle-btn" title="Toggle Dark/Light Mode">☀️</button>
+      </div>
+    </header>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+
+      <!-- ========================================== -->
+      <!-- VIEW 1: DASHBOARD -->
+      <!-- ========================================== -->
+      <section id="view-dashboard" class="view-section active">
+        <!-- Hero Banner -->
+        <div class="hero-banner">
+          <h1 class="hero-title">Master Design Thinking & Karmic DT</h1>
+          <p class="hero-desc">
+            Prepare for NPTEL certification with 240+ practice questions covering d.school stages, SCAMPER, Double
+            Diamond, TRIZ, and Karmic Design Thinking frameworks.
+          </p>
+
+          <div class="quick-stats-row">
+            <div class="stat-card">
+              <div class="stat-icon indigo"><i class="ri-question-answer-line"></i></div>
+              <div>
+                <div class="stat-val" id="stat-answered">0</div>
+                <div class="stat-lbl">Questions Answered</div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon cyan"><i class="ri-percent-line"></i></div>
+              <div>
+                <div class="stat-val" id="stat-accuracy">0%</div>
+                <div class="stat-lbl">Overall Accuracy</div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon amber"><i class="ri-star-line"></i></div>
+              <div>
+                <div class="stat-val" id="stat-bookmarks">0</div>
+                <div class="stat-lbl">Bookmarked Qs</div>
+              </div>
+            </div>
+
+            <div class="stat-card">
+              <div class="stat-icon emerald"><i class="ri-trophy-line"></i></div>
+              <div>
+                <div class="stat-val" id="stat-exams">0</div>
+                <div class="stat-lbl">Exams Passed</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quiz Modes -->
+        <div class="section-heading">
+          <h2><i class="ri-compass-3-line" style="color:var(--accent-primary); margin-right:0.4rem;"></i> Select Study Mode</h2>
+        </div>
+
+        <div class="modes-grid">
+          <div class="mode-card">
+            <div class="mode-card-header">
+              <div class="mode-badge practice"><i class="ri-flashlight-line"></i></div>
+              <div class="mode-title">Practice Mode</div>
+            </div>
+            <div class="mode-desc">
+              Instant feedback, detailed explanations after every question, section filtering, and unlimited time.
+            </div>
+            <button class="btn-primary launch-mode-btn" data-mode="practice">
+              Start Practice 🚀
+            </button>
+          </div>
+
+          <div class="mode-card">
+            <div class="mode-card-header">
+              <div class="mode-badge exam"><i class="ri-timer-line"></i></div>
+              <div class="mode-title">Exam Simulation</div>
+            </div>
+            <div class="mode-desc">
+              Realistic timed exam environment with countdown timer, question palette, review flagging, and final
+              scorecard.
+            </div>
+            <button class="btn-primary launch-mode-btn" data-mode="exam">
+              Launch Timed Exam ⏱️
+            </button>
+          </div>
+
+          <div class="mode-card">
+            <div class="mode-card-header">
+              <div class="mode-badge flashcard"><i class="ri-stack-line"></i></div>
+              <div class="mode-title">3D Flashcards</div>
+            </div>
+            <div class="mode-desc">
+              Active recall study deck with 3D flip card animations and self-assessment scoring.
+            </div>
+            <button class="btn-secondary launch-mode-btn" data-mode="flashcard">
+              Open Flashcards 🎴
+            </button>
+          </div>
+
+          <div class="mode-card">
+            <div class="mode-card-header">
+              <div class="mode-badge bank"><i class="ri-database-2-line"></i></div>
+              <div class="mode-title">Question Bank</div>
+            </div>
+            <div class="mode-desc">
+              Searchable reference library of all 240+ questions with filters, correct answers, and bookmarking.
+            </div>
+            <button class="btn-secondary launch-mode-btn" data-mode="qbank">
+              Browse Bank 📖
+            </button>
+          </div>
+        </div>
+
+        <!-- Modules Breakdown -->
+        <div class="section-heading">
+          <h2>Course Modules</h2>
+        </div>
+        <div id="modules-list-container" class="modules-list">
+          <!-- Dynamically Rendered -->
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- VIEW 2: QUIZ ARENA (PRACTICE & EXAM) -->
+      <!-- ========================================== -->
+      <section id="view-quiz" class="view-section">
+        <div class="quiz-header">
+          <div>
+            <span class="quiz-meta-badge" id="quiz-module-tag">Core Design Thinking</span>
+            <div style="font-size:0.85rem; color:var(--text-muted);" id="quiz-counter">Question 1 of 20</div>
+          </div>
+
+          <div class="quiz-progress-info">
+            <div class="progress-bar-container" style="flex:1;">
+              <div class="progress-bar-fill" id="quiz-progress-bar" style="width: 5%;"></div>
+            </div>
+            <div class="timer-box" id="quiz-timer" style="display:none;">
+              ⏱️ <span id="timer-val">20:00</span>
+            </div>
+            <button class="btn-secondary" id="open-palette-btn" style="padding:0.4rem 0.8rem; font-size:0.82rem;">
+              <i class="ri-grid-fill"></i> Grid
+            </button>
+          </div>
+        </div>
+
+        <!-- Question Card -->
+        <div class="quiz-card">
+          <div class="question-text" id="question-text-content">
+            Loading Question...
+          </div>
+
+          <div class="options-list" id="options-container">
+            <!-- Dynamically populated -->
+          </div>
+
+          <!-- Explanation Box -->
+          <div class="explanation-card" id="explanation-box" style="display:none;">
+            <div class="explanation-title">💡 Explanation & Key Insight</div>
+            <div class="explanation-body" id="explanation-text"></div>
+          </div>
+        </div>
+
+        <!-- Controls Bar -->
+        <div class="quiz-controls-bar">
+          <div style="display:flex; gap:0.5rem;">
+            <button class="flag-btn" id="flag-question-btn">
+              🚩 Flag
+            </button>
+            <button class="bookmark-btn" id="bookmark-question-btn">
+              ⭐ Bookmark
+            </button>
+          </div>
+
+          <div style="display:flex; gap:0.75rem;">
+            <button class="btn-secondary" id="prev-q-btn" disabled>
+              ⬅️ Previous
+            </button>
+            <button class="btn-primary" id="next-q-btn">
+              Next Question ➡️
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- VIEW 3: 3D FLASHCARDS -->
+      <!-- ========================================== -->
+      <section id="view-flashcard" class="view-section">
+        <div class="flashcard-container">
+          <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem;">
+            <span class="quiz-meta-badge" id="flashcard-module-tag">Module</span>
+            <span style="font-size:0.85rem; color:var(--text-muted);" id="flashcard-counter">Card 1 of 240</span>
+          </div>
+
+          <div class="flashcard" id="flashcard-elem">
+            <!-- Front -->
+            <div class="flashcard-front">
+              <div>
+                <div
+                  style="font-size:0.8rem; text-transform:uppercase; color:var(--accent-secondary); font-weight:700; margin-bottom:0.8rem;">
+                  Question (Click to Flip)
+                </div>
+                <div class="question-text" id="flashcard-q-text">
+                  What is the first stage in Design Thinking?
+                </div>
+              </div>
+              <div class="flashcard-hint">👇 Click card or spacebar to reveal answer</div>
+            </div>
+
+            <!-- Back -->
+            <div class="flashcard-back">
+              <div>
+                <div
+                  style="font-size:0.8rem; text-transform:uppercase; color:var(--success); font-weight:700; margin-bottom:0.8rem;">
+                  Correct Answer & Insight
+                </div>
+                <div style="font-size:1.1rem; font-weight:700; color:var(--text-main); margin-bottom:0.75rem;"
+                  id="flashcard-ans-text">
+                  Answer
+                </div>
+                <div style="font-size:0.9rem; color:var(--text-muted);" id="flashcard-exp-text">
+                  Explanation
+                </div>
+              </div>
+              <div class="flashcard-hint">Click card to flip back</div>
+            </div>
+          </div>
+
+          <!-- Difficulty Rating Controls -->
+          <div class="flashcard-controls">
+            <button class="btn-secondary fc-rate-btn" style="border-color:var(--error); color:var(--error);">Hard
+              🔴</button>
+            <button class="btn-secondary fc-rate-btn" style="border-color:var(--warning); color:var(--warning);">Medium
+              🟡</button>
+            <button class="btn-secondary fc-rate-btn" style="border-color:var(--success); color:var(--success);">Easy
+              🟢</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- VIEW 4: QUESTION BANK & SEARCH -->
+      <!-- ========================================== -->
+      <section id="view-qbank" class="view-section">
+        <div class="search-bar-wrapper">
+          <div class="search-input-box">
+            <i class="ri-search-line search-icon"></i>
+            <input type="text" id="qbank-search-input"
+              placeholder="Search questions by keyword (e.g. SCAMPER, TRIZ, Empathy, POV)...">
+          </div>
+
+          <select class="filter-select" id="qbank-module-filter">
+            <option value="all">All Modules</option>
+            <option value="Core Design Thinking">Core Design Thinking (100 Qs)</option>
+            <option value="Practice Set 2">Practice Set 2 (100 Qs)</option>
+            <option value="Karmic Design Thinking">Karmic Design Thinking (40 Qs)</option>
+          </select>
+
+          <button class="btn-secondary" id="qbank-bm-filter">
+            ⭐ Bookmarked Only
+          </button>
+        </div>
+
+        <div style="margin-bottom:1rem; font-size:0.88rem; color:var(--text-muted);" id="qbank-count-label">
+          Showing 240 of 240 Questions
+        </div>
+
+        <div id="qbank-list-container" class="qbank-list">
+          <!-- Dynamically Rendered -->
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- VIEW 5: ANALYTICS & INSIGHTS -->
+      <!-- ========================================== -->
+      <section id="view-analytics" class="view-section">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:1.5rem;">
+          <h2>Performance Analytics</h2>
+          <button class="btn-secondary" id="reset-stats-btn"
+            style="color:var(--error); border-color:var(--error-border);">
+            Reset Progress 🗑️
+          </button>
+        </div>
+
+        <div class="results-stats-grid">
+          <div class="res-stat-box">
+            <div class="res-val" id="analytics-total-q">0</div>
+            <div class="res-lbl">Total Questions Solved</div>
+          </div>
+          <div class="res-stat-box">
+            <div class="res-val" id="analytics-correct-q">0</div>
+            <div class="res-lbl">Correct Answers</div>
+          </div>
+          <div class="res-stat-box">
+            <div class="res-val" id="analytics-accuracy-pct">0%</div>
+            <div class="res-lbl">Average Accuracy</div>
+          </div>
+        </div>
+
+        <div class="section-heading">
+          <h3>Module Performance Breakdown</h3>
+        </div>
+
+        <div id="analytics-breakdown-container" class="stat-card" style="display:block; padding:1.5rem;">
+          <!-- Dynamically populated -->
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer Credits -->
+    <footer class="app-footer">
+      <div class="footer-container">
+        <div class="footer-badge">
+          <i class="ri-award-fill" style="color:#f59e0b; margin-right:0.4rem;"></i> Created by <strong
+            style="color:var(--text-main); font-weight:800; margin-left:0.25rem;">Amit kumar</strong>
+        </div>
+        <p class="footer-subtext">
+          NPTEL Design Thinking & Karmic Design Thinking Mastery Portal
+        </p>
+        <div class="footer-meta">
+          <span>240+ Exam Practice Questions</span> • <span>Interactive AI Study Tools</span> • <span>Updated
+            2026</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- ========================================== -->
+  <!-- MODALS -->
+  <!-- ========================================== -->
+
+  <!-- Exam Setup Modal -->
+  <div class="palette-modal" id="exam-setup-modal">
+    <div class="palette-content" style="max-width:480px;">
+      <div class="palette-header">
+        <h3 style="font-size:1.2rem;">⏱️ Timed Exam Setup</h3>
+      </div>
+      <div style="display:flex; flex-direction:column; gap:1rem; margin-bottom:1.5rem;">
+        <div>
+          <label style="font-size:0.85rem; color:var(--text-muted); display:block; margin-bottom:0.4rem;">Select
+            Module</label>
+          <select class="filter-select" id="exam-module-select" style="width:100%;">
+            <option value="all">All Modules (Randomized 240+ Qs)</option>
+            <option value="Core Design Thinking">Core Design Thinking</option>
+            <option value="Practice Set 2">Practice Set 2</option>
+            <option value="Karmic Design Thinking">Karmic Design Thinking</option>
+          </select>
+        </div>
+
+        <div>
+          <label style="font-size:0.85rem; color:var(--text-muted); display:block; margin-bottom:0.4rem;">Number of
+            Questions</label>
+          <select class="filter-select" id="exam-count-select" style="width:100%;">
+            <option value="10">10 Questions</option>
+            <option value="20" selected>20 Questions</option>
+            <option value="30">30 Questions</option>
+            <option value="50">50 Questions</option>
+          </select>
+        </div>
+
+        <div>
+          <label style="font-size:0.85rem; color:var(--text-muted); display:block; margin-bottom:0.4rem;">Time
+            Limit</label>
+          <select class="filter-select" id="exam-time-select" style="width:100%;">
+            <option value="10">10 Minutes</option>
+            <option value="20" selected>20 Minutes</option>
+            <option value="30">30 Minutes</option>
+          </select>
+        </div>
+      </div>
+
+      <div style="display:flex; justify-content:flex-end; gap:0.8rem;">
+        <button class="btn-secondary" id="cancel-exam-setup-btn">Cancel</button>
+        <button class="btn-primary" id="start-exam-confirm-btn">Begin Exam 🚀</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Question Palette Drawer Modal -->
+  <div class="palette-modal" id="palette-modal">
+    <div class="palette-content">
+      <div class="palette-header">
+        <h3>Question Navigator Grid</h3>
+        <button class="icon-btn" id="close-palette-btn">✕</button>
+      </div>
+      <div class="palette-grid" id="palette-items-grid">
+        <!-- Dynamically rendered -->
+      </div>
+    </div>
+  </div>
+
+  <!-- Exam Results Modal -->
+  <div class="palette-modal" id="exam-results-modal">
+    <div class="results-card">
+      <h2 style="font-size:1.6rem;" id="exam-res-grade">Exam Completed! 🎉</h2>
+      <div class="score-circle">
+        <div class="score-percent" id="exam-res-score-pct">0%</div>
+        <div class="score-label">Final Score</div>
+      </div>
+
+      <div class="results-stats-grid">
+        <div class="res-stat-box">
+          <div class="res-val" id="exam-res-correct">0/0</div>
+          <div class="res-lbl">Correct Answers</div>
+        </div>
+        <div class="res-stat-box">
+          <div class="res-val" id="exam-res-time">0m</div>
+          <div class="res-lbl">Time Spent</div>
+        </div>
+        <div class="res-stat-box">
+          <div class="res-val" style="color:var(--success);">Pass</div>
+          <div class="res-lbl">Status</div>
+        </div>
+      </div>
+
+      <button class="btn-primary" id="close-exam-res-btn" style="width:100%; padding:0.85rem;">
+        Return to Dashboard 🏠
+      </button>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toast-container"></div>
+
+  <!-- Confetti Canvas -->
+  <canvas id="confetti-canvas"></canvas>
+
+  <!-- JavaScript Modules -->
+  <script src="js/questions.js"></script>
+  <script src="js/app.js"></script>
+</body>
+
+</html>

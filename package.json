@@ -1,0 +1,14 @@
+{
+  "name": "nptel-design-thinking-quiz",
+  "version": "1.0.0",
+  "description": "Interactive NPTEL Design Thinking Quiz Web Application with 240+ Questions",
+  "main": "index.html",
+  "scripts": {
+    "dev": "vite --port 3000 --host",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.1.4"
+  }
+}
