@@ -1329,31 +1329,37 @@ h1, h2, h3, h4, h5, h6 {
 
   /* Flashcards Mobile */
   .flashcard-container {
-    margin: 1rem auto;
+    margin: 0.85rem auto;
   }
   .flashcard {
-    min-height: 270px;
-    padding: 1.4rem 1.15rem;
+    min-height: 200px;
+    padding: 1.25rem 1rem;
+    border-radius: 12px;
   }
   .flashcard-back {
-    padding: 1.4rem 1.15rem;
+    padding: 1.25rem 1rem;
+    border-radius: 12px;
   }
   .flashcard .question-text {
-    font-size: 1rem;
+    font-size: 0.95rem;
+    line-height: 1.45;
   }
   .flashcard-controls {
     gap: 0.4rem;
+    margin-top: 1rem;
   }
   .fc-rate-btn {
     flex: 1;
-    padding: 0.5rem 0.4rem;
-    font-size: 0.8rem;
+    padding: 0.5rem 0.35rem;
+    font-size: 0.78rem;
+    height: 38px;
+    border-radius: 8px;
   }
 
   /* Question Bank Mobile */
   .search-bar-wrapper {
     flex-direction: column;
-    gap: 0.55rem;
+    gap: 0.5rem;
   }
   .search-input-box {
     width: 100%;
@@ -1361,21 +1367,32 @@ h1, h2, h3, h4, h5, h6 {
   }
   .filter-select {
     width: 100%;
+    padding: 0.65rem 0.85rem;
+    font-size: 0.84rem;
   }
   .qbank-options {
     grid-template-columns: 1fr;
+    gap: 0.4rem;
+  }
+  .qbank-item {
+    padding: 1rem;
+    border-radius: 10px;
+  }
+  .qbank-qtext {
+    font-size: 0.95rem;
   }
 
   /* Modals Mobile */
   .palette-content {
     width: 94%;
-    padding: 1.2rem 1rem;
-    max-height: 85vh;
+    padding: 1.15rem 0.9rem;
+    max-height: 82vh;
+    border-radius: 14px;
   }
   .palette-grid {
     grid-template-columns: repeat(auto-fill, minmax(36px, 1fr));
-    gap: 0.4rem;
-    max-height: 300px;
+    gap: 0.35rem;
+    max-height: 280px;
   }
   .palette-item {
     width: 36px;
@@ -1383,20 +1400,30 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 0.8rem;
   }
   .results-card {
-    padding: 1.5rem 1.15rem;
+    padding: 1.4rem 1rem;
     margin: 1rem;
+    border-radius: 16px;
   }
   .score-circle {
-    width: 110px;
-    height: 110px;
-    margin: 1rem auto;
+    width: 100px;
+    height: 100px;
+    margin: 0.85rem auto;
   }
   .score-percent {
-    font-size: 1.75rem;
+    font-size: 1.6rem;
   }
   .results-stats-grid {
     grid-template-columns: 1fr;
-    gap: 0.5rem;
+    gap: 0.45rem;
+  }
+
+  /* Mobile Touch Tap Feedback */
+  .btn-primary:active, .btn-secondary:active, .option-btn:active, .mode-card:active {
+    transform: scale(0.97);
+  }
+
+  .app-footer {
+    padding-bottom: 6.5rem !important;
   }
 }
 
