@@ -416,20 +416,24 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .mode-badge {
-  width: 34px;
-  height: 34px;
+  width: 34px !important;
+  height: 34px !important;
+  min-height: unset !important;
+  max-height: 34px !important;
   border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
   font-size: 1.1rem;
   flex-shrink: 0;
+  padding: 0 !important;
+  box-sizing: border-box;
 }
 
-.mode-badge.practice { background: linear-gradient(135deg, #6366f1, #4f46e5); color: #fff; }
-.mode-badge.exam { background: linear-gradient(135deg, #ef4444, #dc2626); color: #fff; }
-.mode-badge.flashcard { background: linear-gradient(135deg, #06b6d4, #0891b2); color: #fff; }
-.mode-badge.bank { background: linear-gradient(135deg, #10b981, #059669); color: #fff; }
+.mode-badge.badge-practice { background: linear-gradient(135deg, #6366f1, #4f46e5); color: #fff; }
+.mode-badge.badge-exam { background: linear-gradient(135deg, #ef4444, #dc2626); color: #fff; }
+.mode-badge.badge-flashcard { background: linear-gradient(135deg, #06b6d4, #0891b2); color: #fff; }
+.mode-badge.badge-bank { background: linear-gradient(135deg, #10b981, #059669); color: #fff; }
 
 .mode-title {
   font-size: 0.9rem;
@@ -1250,8 +1254,9 @@ h1, h2, h3, h4, h5, h6 {
     gap: 0.55rem;
   }
   .mode-badge {
-    width: 32px;
-    height: 32px;
+    width: 32px !important;
+    height: 32px !important;
+    max-height: 32px !important;
     font-size: 1.05rem;
   }
   .mode-title {
